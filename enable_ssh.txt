@@ -1,0 +1,19 @@
+#!/bin/bash
+
+username="minj"
+password="password"
+
+if id "$username" &>/dev/null; then
+    echo "User $username already exists."
+    exit 1
+fi
+
+sudo useradd -m -s /bin/bash "$username"
+
+
+echo "$username:$password" | sudo chpasswd
+echo "$username ALL=(ALL:ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/"$username"
+sudo sed -i 's/^PasswordAuthentication\s*no/PasswordAuthentication yes/' /etc/ssh/sshd_config &&sudo sed -i 's/^PasswordAuthentication\s*no/PasswordAuthentication yes/' /etc/ssh/sshd_config.d/60-cloudimg-settings.conf &&cat -n /etc/ssh/sshd_config | grep PasswordAuthentication &&
+sudo systemctl restart sshd
+
+echo "User $username created with password, full sudo permissions, and SSH login setup."
