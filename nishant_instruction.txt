@@ -1,22 +1,47 @@
-set the hostname
-sudo hostsnamectl set-hostname app001l007
-set host entry as per 
+I have created the AD , DNS server --> 
+domain name : minjtech.com
+DNS server ip: 172.31.44.45
+ad server public ip : 52.66.56.14
+AD And DNS server computer name : app001w001
+AD And DNS server c\fully qaulified domain name (FQDN): app001w001.minjtech.com
+----------------
+
+now creating ubuntu server : 22.0
+setu the username password authentication.
+setup machine name cuputername : app001l010
+public ip : 15.206.92.119
+private ip: 172.31.34.187
+setuo the DNS entry of ad server and dns server and its fqdn inside linux ubuntu machine 
+git clone , ad domin join bash script
+
+git clone https://github.com/minj1992/ad-conenct.git
+-----
+
+set the hostname:
+sudo hostnamectl set-hostname app001l010
+set host entry as per :
 sudo vi /etc/hosts
 172.31.44.45 minjtech.com
 172.31.44.45 app001w001 app001w001.minjtech.com
-172.31.33.103 app001l007 app001l007.minjtech.com
+172.31.34.187 app001l010 app001l010.minjtech.com
+
+-----------
 
 git clone https://github.com/minj1992/ad-conenct.git
-run as ubuntu user 
-sudo cp -r /$HOME/krb5.conf /etc/
-sudo mkdir -p /etc/sssd/ && sudo cp -r /$HOME/sssd.conf /etc/sssd/
+run as ubuntu user :
+sudo apt install unzip
+sudo unzip scripts
+cd scripts
+sudo chmod +x ADconnection.sh
+sudo cp -r /home/ubuntu/ad-connect/krb5.conf /etc/
+sudo mkdir -p /etc/sssd/ && sudo cp -r /home/ubuntu/ad-conenct/sssd.conf /etc/sssd/
 
 
 
 once sh ADconnect.sh is done  please edit the master_sssd.conf with aprrpirate value 
 
 then run below 
-sudo cp -rf /$HOME/master_sssd.conf /etc/sssd/sssd.conf
+sudo cp -rf /home/ubuntu/ad-conenct/master_sssd.conf /etc/sssd/sssd.conf
 sudo chmod 600 /etc/sssd/sssd.conf
 sudo chown root:root /etc/sssd/sssd.conf
 
@@ -25,8 +50,9 @@ sudo chown -R root:root /var/lib/sss/db/
 sudo chmod 700 /var/lib/sss/db/
 
 
-systemctl restart  sssd
+sudo systemctl restart  sssd
  
 to validate :
 
 sudo id administrator
+
