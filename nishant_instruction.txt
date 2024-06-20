@@ -1,0 +1,32 @@
+set the hostname
+sudo hostsnamectl set-hostname app001l007
+set host entry as per 
+sudo vi /etc/hosts
+172.31.44.45 minjtech.com
+172.31.44.45 app001w001 app001w001.minjtech.com
+172.31.33.103 app001l007 app001l007.minjtech.com
+
+git clone https://github.com/minj1992/ad-conenct.git
+run as ubuntu user 
+sudo cp -r /$HOME/krb5.conf /etc/
+sudo mkdir -p /etc/sssd/ && sudo cp -r /$HOME/sssd.conf /etc/sssd/
+
+
+
+once sh ADconnect.sh is done  please edit the master_sssd.conf with aprrpirate value 
+
+then run below 
+sudo cp -rf /$HOME/master_sssd.conf /etc/sssd/sssd.conf
+sudo chmod 600 /etc/sssd/sssd.conf
+sudo chown root:root /etc/sssd/sssd.conf
+
+sudo chmod 666 /etc/krb5.conf
+sudo chown -R root:root /var/lib/sss/db/
+sudo chmod 700 /var/lib/sss/db/
+
+
+systemctl restart  sssd
+ 
+to validate :
+
+sudo id administrator
