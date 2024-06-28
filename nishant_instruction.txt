@@ -39,7 +39,7 @@ sudo apt install unzip
 sudo unzip scripts
 cd scripts
 sudo chmod +x ADconnection.sh
-sudo cp -r /home/devops/ad-connect/krb5.conf /etc/
+sudo cp -r /home/devops/ad-conenct/krb5.conf /etc/
 sudo mkdir -p /etc/sssd/ && sudo cp -r /home/devops/ad-conenct/sssd.conf /etc/sssd/
 
 
