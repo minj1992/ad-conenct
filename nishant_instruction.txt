@@ -41,10 +41,11 @@ cd scripts
 sudo chmod +x ADconnection.sh
 sudo cp -r /home/devops/ad-conenct/krb5.conf /etc/
 sudo mkdir -p /etc/sssd/ && sudo cp -r /home/devops/ad-conenct/sssd.conf /etc/sssd/
+#get insdie the scripts folder and run the below command :
+sudo sh ADconnection.sh 
 
 
-
-once sh ADconnect.sh is done  please edit the master_sssd.conf with aprrpirate value 
+once ADconnection.sh  is done  please edit the master_sssd.conf with aprrpirate value 
 
 then run below 
 sudo cp -rf /home/devops/ad-conenct/master_sssd.conf /etc/sssd/sssd.conf
