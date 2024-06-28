@@ -4,14 +4,20 @@ DNS server ip: 172.31.44.45
 ad server public ip : 52.66.56.14
 AD And DNS server computer name : app001w001
 AD And DNS server c\fully qaulified domain name (FQDN): app001w001.minjtech.com
+
+
+
+172.31.41.244 minjtech.xyz
+172.31.41.244 app010w001 app010w001.minjtech.xyz
+172.31.32.212 APP010PL001 APP010PL001.minjtech.xyz
 ----------------
 
-now creating ubuntu server : 22.0
+now creating devops server : 22.0
 setu the username password authentication.
 setup machine name cuputername : app001l010
 public ip : 15.206.92.119
 private ip: 172.31.34.187
-setuo the DNS entry of ad server and dns server and its fqdn inside linux ubuntu machine 
+setuo the DNS entry of ad server and dns server and its fqdn inside linux devops machine 
 git clone , ad domin join bash script
 
 git clone https://github.com/minj1992/ad-conenct.git
@@ -28,20 +34,20 @@ sudo vi /etc/hosts
 -----------
 
 git clone https://github.com/minj1992/ad-conenct.git
-run as ubuntu user :
+run as devops user :
 sudo apt install unzip
 sudo unzip scripts
 cd scripts
 sudo chmod +x ADconnection.sh
-sudo cp -r /home/ubuntu/ad-connect/krb5.conf /etc/
-sudo mkdir -p /etc/sssd/ && sudo cp -r /home/ubuntu/ad-conenct/sssd.conf /etc/sssd/
+sudo cp -r /home/devops/ad-connect/krb5.conf /etc/
+sudo mkdir -p /etc/sssd/ && sudo cp -r /home/devops/ad-conenct/sssd.conf /etc/sssd/
 
 
 
 once sh ADconnect.sh is done  please edit the master_sssd.conf with aprrpirate value 
 
 then run below 
-sudo cp -rf /home/ubuntu/ad-conenct/master_sssd.conf /etc/sssd/sssd.conf
+sudo cp -rf /home/devops/ad-conenct/master_sssd.conf /etc/sssd/sssd.conf
 sudo chmod 600 /etc/sssd/sssd.conf
 sudo chown root:root /etc/sssd/sssd.conf
 
