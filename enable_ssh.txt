@@ -1,6 +1,6 @@
 #!/bin/bash
 
-username="minj"
+username="devops"
 password="password"
 
 if id "$username" &>/dev/null; then
